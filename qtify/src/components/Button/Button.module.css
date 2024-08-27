@@ -6,3 +6,7 @@
     border: 1px solid darkgreen;
     border-radius: 8px;
 }
+
+.btn:hover {
+    cursor: pointer;
+}
