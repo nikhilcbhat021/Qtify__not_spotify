@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Search.module.css";
-import {ReactComponent as SearchIcon} from "../../assets/search-icon.svg";
+import SearchIcon from "../../assets/search-icon.svg?react";
 import useAutocomplete from "@mui/material/useAutocomplete";
 import { styled } from "@mui/system";
 // import { truncate } from "../../helpers/helpers";
@@ -78,6 +78,7 @@ function Search({ searchData, placeholder }) {
         </div>
         <div>
           <button className={styles.searchButton} type="submit">
+            {/* <img src={SearchIcon} /> */}
             <SearchIcon />
           </button>
         </div>

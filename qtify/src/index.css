@@ -1,18 +1,23 @@
 :root {
-  /* font-family: var(--poppins-light); */
-  --secondary: #34c94a;
-  --primary: #121212;
+  --color-primary: #34C94B;
+  --color-secondary: #121212;
+  --color-black: black;
+  --color-light-black: #050505
   --text: #FFFFFF;
 
-  font-family: "poppins", sans-serif;
   line-height: 1.5;
-  font-size: large;
-  font-weight: 400;
-  font-style: normal;
-  /* font-weight: 400; */
 
   background-color: var(--primary);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
- 
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+}
+
+body {
+  margin:0;
 }
