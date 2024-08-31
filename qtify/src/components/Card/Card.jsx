@@ -1,6 +1,6 @@
 import styles from './Card.module.css'
 import { Chip } from '@mui/material'
-import '../../App.css'
+// import '../../App.css'
 import genStyles from '../../App.module.css'
 import { makeStyles } from '@mui/material'
 import styled from '@emotion/styled';

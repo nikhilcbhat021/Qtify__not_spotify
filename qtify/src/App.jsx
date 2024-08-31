@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Navbar from './components/Navbar/Navabar'
 import { BrowserRouter } from 'react-router-dom'
-// import './App.css'
 import styles from './App.module.css'
 import btnStyles from './components/Button/Button.module.css'
 import Hero from './components/Hero/Hero';
