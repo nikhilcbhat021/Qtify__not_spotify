@@ -1,0 +1,41 @@
+.cardParent {
+    display: flex;
+    flex-direction: column;
+    /* height: 232px; */
+    object-fit: cover;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    --color-b: blue;
+}
+
+.cardTitle {
+    padding-top: .5rem;
+    justify-content: flex-end;
+    color: var(--color-text);
+    font-weight: var(--fw-regular);
+    font-size: 14px;
+}
+
+.cardImg {
+    height: var(--card-height);
+    object-fit: cover;
+    max-width: 100%;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0;
+    margin: 0;
+    background-color: blue;
+}
+
+.cardChipParent {
+    flex: 1 1 auto;
+    height: 35px;
+    display: flex;
+    border-radius: 0px 0px 10px 10px;
+    padding-left: 6px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: white;
+}

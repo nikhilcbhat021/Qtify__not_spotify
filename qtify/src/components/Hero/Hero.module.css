@@ -1,12 +1,16 @@
 .hero {
-    background-color: var(--color-black);
+    background-color: var(--color-secondary);
     height: 270px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-weight: 800;
+    line-height: 3rem;
     color: white;
     gap: 30px;
   }
   
+.hero h1 {
+  font-weight: var(--fw-bold);
+  font-size: 2rem;
+}

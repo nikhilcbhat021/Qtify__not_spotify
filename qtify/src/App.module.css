@@ -1,0 +1,47 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+.container {
+    padding: 1rem;
+    margin:0;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), auto)); /* Adjust 200px based on card size */
+    grid-gap: 40px;
+    justify-content: space-between;
+
+    /* Space between the cards */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.grid-item {
+    flex: 1 1 auto;
+}
+  
+.section-container {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+.flex-item {
+    flex: 0 0 auto;
+}

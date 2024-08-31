@@ -23,7 +23,7 @@ const Listbox = styled("ul")(({ theme }) => ({
   bottom: 0,
   right: 0,
   listStyle: "none",
-  backgroundColor: "var(--color-black)",
+  backgroundColor: "var(--color-secondary)",
   overflow: "auto",
   "& li.Mui-focused": {
     backgroundColor: "#4a8df6",
@@ -67,7 +67,7 @@ function Search({ searchData, placeholder }) {
           onSubmit(e, value);
         }}
       >
-        <div {...getRootProps()}>
+        <div {...getRootProps()} className={styles.searchParent}>
           <input
             name="album"
             className={styles.search}
