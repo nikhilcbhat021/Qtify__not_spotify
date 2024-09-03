@@ -11,8 +11,13 @@ import axios from 'axios'
 
 
 function App() {
+
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
+  const [topAlbumBtn, setTopAlbumBtn] = useState(0);
+  const [newAlbumBtn, setNewAlbumBtn] = useState(0);
+  
+  const collapseBtnText=["Show All", "Collapse"]
 
   useEffect(()=>{
     async function onLoadHandler() {
@@ -51,17 +56,25 @@ function App() {
 
         <div className={[styles['flex-container'], styles['align-center'], styles['container']].join(" ")}>
           <p style={{fontWeight:'400', fontSize:'20px'}}>Top Albums</p>
-          <Button customStyle={{border:'0', fontSize:'20px'}} className={[btnStyles.btnColor]}>Collapse</Button>
+          <Button 
+            customStyle={{border:'0', fontSize:'20px'}} 
+            className={[btnStyles.btnColor]}
+            onClick={()=>setTopAlbumBtn((curr)=>{return 1-curr;})}
+            >{collapseBtnText[topAlbumBtn]}</Button>
         </div>
-        <CarousalSection items={topAlbums} sectionId="__1__"/>
+        <CarousalSection items={topAlbums} sectionId="__1__" btnState={collapseBtnText[topAlbumBtn]} />
         
         <Line />
 
         <div className={[styles['flex-container'], styles['align-center'], styles['container']].join(" ")}>
           <p style={{fontWeight:'400', fontSize:'20px'}}>New Albums</p>
-          <Button customStyle={{border:'0', fontSize:'20px'}} className={[btnStyles.btnColor]}>Collapse</Button>
+          <Button 
+            customStyle={{border:'0', fontSize:'20px'}}
+            className={[btnStyles.btnColor]}
+            onClick={()=>setNewAlbumBtn((curr)=>{return 1-curr;})}
+          >{collapseBtnText[newAlbumBtn]}</Button>
         </div>
-        <CarousalSection items={newAlbums} sectionId="__2__"/>
+        <CarousalSection items={newAlbums} sectionId="__2__" btnState={collapseBtnText[newAlbumBtn]} />
         
         <Line />
 

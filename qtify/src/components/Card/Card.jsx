@@ -7,7 +7,7 @@ import styled from '@emotion/styled';
 import { color } from '@mui/system';
 
 function Card({details}) {
-    console.log(details);
+    // console.log(details);
     return (<>
         <div className={styles.cardParent}>
             <div className={[genStyles['flex-container'], genStyles['flex-column']].join(" ")} >

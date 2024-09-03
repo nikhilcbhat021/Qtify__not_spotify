@@ -1,0 +1,60 @@
+{
+    "breakpoints": {
+        "1": {
+            "spaceBetween": 40,
+            "slidesPerView": 1
+        },
+        "387": {
+            "spaceBetween": 40,
+            "slidesPerView": 2
+        },
+        "512": {
+            "spaceBetween": 60,
+            "slidesPerView": 2
+        },
+        "576": {
+            "spaceBetween": 40,
+            "slidesPerView": 3
+        },
+        "670": {
+            "spaceBetween": 60,
+            "slidesPerView": 3
+        },
+        "790": {
+            "spaceBetween": 40,
+            "slidesPerView": 4
+        },
+        "860": {
+            "spaceBetween": 60,
+            "slidesPerView": 4
+        },
+        "989": {
+            "spaceBetween": 40,
+            "slidesPerView": 5
+        },
+        "1064": {
+            "spaceBetween": 50,
+            "slidesPerView": 5
+        },
+        "1190": {
+            "spaceBetween": 40,
+            "slidesPerView": 6
+        },
+        "1240": {
+            "spaceBetween": 50,
+            "slidesPerView": 6
+        },
+        "1384": {
+            "spaceBetween": 40,
+            "slidesPerView": 7
+        },
+        "1500": {
+            "spaceBetween": 50,
+            "slidesPerView": 7
+        },
+        "1600": {
+            "spaceBetween": 60,
+            "slidesPerView": 7
+        }
+    }
+}

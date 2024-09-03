@@ -9,6 +9,7 @@
   --fw-light: 200;
   --fw-regular: 400;
   --card-height: 170px;
+  --card-full-height: 255px;
   --card-width: 159px;
 
   line-height: 1.5;
@@ -68,4 +69,61 @@ p, h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+
+.swiper {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+
+.swiper-slide {
+  border-radius: 2rem;
+  /* text-align: center; */
+  font-size: 14px;
+  background: var(--color-secondary);
+
+  width: var(--card-width);
+  height: var(--card-full-height);
+}
+
+.swiper-button-prev {
+  background-image: url('./assets/left_nav.svg');
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  border-radius: 50%;
+  right: auto;
+  left: 0;
+  position: absolute;
+  border: 0;
+}
+
+.swiper-button-next {
+  background-image: url('./assets/right_nav.svg');
+  height: 32px;
+  width: 32px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  border-radius: 50%;
+  right: 0;
+  left: auto;
+  position: absolute;
+  border: 0;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-button-next.swiper-button-disabled {
+  display: none;
+}
+
+.swiper-button-prev.swiper-button-disabled {
+  display: none;
 }

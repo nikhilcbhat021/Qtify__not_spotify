@@ -1,8 +1,8 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), auto)); /* Adjust 200px based on card size */
+    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), auto));
     grid-gap: 40px;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 
     /* Space between the cards */
     padding-left: 1rem;
@@ -12,7 +12,7 @@
 .grid-item {
     flex: 1 1 auto;
 }
-  
+
 .section-container {
     background-color: var(--color-secondary);
     color: var(--color-text);
