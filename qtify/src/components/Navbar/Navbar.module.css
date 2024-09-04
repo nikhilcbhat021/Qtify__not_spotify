@@ -1,10 +1,13 @@
 .navbar {
-    background-color: var(--color-primary);
-    height: 74px;
-    width: auto;
-    padding: 5px 32px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+  background-color: var(--color-primary);
+  height: 74px;
+  width: auto;
+  padding: 5px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
   
+.btn:hover {
+  cursor: pointer;
+}
