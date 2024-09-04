@@ -119,13 +119,5 @@ function App() {
   )
 }
 
-function a11yProps(index) {
-  return {
-    id: `genre-tab-${index}`,
-    'aria-controls': `genre-tabpanel-${index}`,
-  };
-}
-function CustomTab({key, iterable, children}) {
-
-}
+/* TODO : Define CustomTab and use Carousal in it. Send Tabs and CustomTab as children. */
 export default App
