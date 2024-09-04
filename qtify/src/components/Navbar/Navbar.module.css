@@ -9,9 +9,5 @@
 }
 
 .btnnav {
-  /* cursor: cell; */
-}
-
-.btnnav:hover {
   cursor: pointer;
 }
