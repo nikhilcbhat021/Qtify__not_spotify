@@ -8,10 +8,12 @@ function Button({
         children
     }) {
 
+    console.log();
+
     return (
         <button
             style={customStyle}
-            className={[...className, styles.btn].join(" ")}
+            className={[className, styles.btn].join(" ")}
             onClick={onClick}
             onMouseEnter={()=>{console.log(`mouse hovered, text=${text} , children=${children}`);}}
         >{text? text : children}</button>
