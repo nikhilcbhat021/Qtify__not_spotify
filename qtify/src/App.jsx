@@ -10,12 +10,18 @@ import CarousalSection from './components/Sections/CarousalSection'
 import axios from 'axios'
 
 
+// @mui
+import { Tab, Tabs } from '@mui/material'
+
 function App() {
 
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
-  const [topAlbumBtn, setTopAlbumBtn] = useState(0);
-  const [newAlbumBtn, setNewAlbumBtn] = useState(0);
+  const [allSongs, setAllSongs] = useState([]);
+  const [filteredSongs, setFilteredSongs] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState(0);
+
   
   const collapseBtnText=["Show All", "Collapse"]
 
@@ -23,22 +29,41 @@ function App() {
     async function onLoadHandler() {
       try {
         let token = '123.456.7890'
-        let topresponse = await axios.get(`https://qtify-backend-labs.crio.do/albums/top`, {
+        const topalbumsresponse = await axios.get(`https://qtify-backend-labs.crio.do/albums/top`, {
           headers:{
             'Authorization': `Bearer ${token}`,
           },
         });
 
-        let newresponse = await axios.get(`https://qtify-backend-labs.crio.do/albums/new`, {
+        const newalbumsresponse = await axios.get(`https://qtify-backend-labs.crio.do/albums/new`, {
           headers:{
             'Authorization': `Bearer ${token}`,
           },
         })
 
-        // console.log(response);
+        const allsongsresponse = await axios.get(`https://qtify-backend-labs.crio.do/songs`, {
+          headers:{
+            'Authorization': `Bearer ${token}`,
+          },
+        })
 
-        setTopAlbums(topresponse.data);
-        setNewAlbums(newresponse.data);
+        const genresresponse = await axios.get(`https://qtify-backend-labs.crio.do/genres`, {
+          headers:{
+            'Authorization': `Bearer ${token}`,
+          },
+        })
+
+        console.log("Inside useEffect");
+        // console.log(response.data);
+
+        setTopAlbums(topalbumsresponse.data);
+        setNewAlbums(newalbumsresponse.data);
+        setAllSongs(allsongsresponse.data);
+        setFilteredSongs(allsongsresponse.data);
+        setGenres([{key:"all", label: "All"}, ...genresresponse.data.data]);
+        
+        console.log([{key:"all", label: "All"}, ...genresresponse.data.data]);
+
       } catch (error) {
         console.log(error.message);
       }
@@ -47,40 +72,60 @@ function App() {
     onLoadHandler();
   }, [])
 
+  useEffect(()=>{
+    console.log("inside useeffect for genres only");
+    console.log(genres);
+  }, [genres])
+
+
+  const handleChange = (event, newValue) => {
+    console.log(`In handleChange ${genres[newValue].key}`);
+    let postFiltering = [];
+
+    if (genres[newValue].key === 'all')
+      postFiltering = [...allSongs];
+    else
+      postFiltering = allSongs.filter((song) => (song.genre.key===genres[newValue].key));
+    
+    console.log(postFiltering.map(s=>s.title));
+    console.log("all songs len="+allSongs.length)
+    setSelectedGenre(newValue);
+    setFilteredSongs(postFiltering);
+  };
+
+  console.log(selectedGenre);
   return (
     <BrowserRouter>
       <Navbar searchData=""/>
       <Hero/>
 
       <section className={[styles['flex-container'], styles['gap-2'], styles['flex-column'], styles['container']].join(" ")}>
-
-        <div className={[styles['flex-container'], styles['align-center'], styles['container']].join(" ")}>
-          <p style={{fontWeight:'400', fontSize:'20px'}}>Top Albums</p>
-          <Button 
-            customStyle={{border:'0', fontSize:'20px'}} 
-            className={[btnStyles.btnColor]}
-            onClick={()=>setTopAlbumBtn((curr)=>{return 1-curr;})}
-            >{collapseBtnText[topAlbumBtn]}</Button>
-        </div>
-        <CarousalSection items={topAlbums} sectionId="__1__" btnState={collapseBtnText[topAlbumBtn]} />
-        
+        <CarousalSection iterable={topAlbums} sectionTitle="Top Albums" key="__1__" />
+        <Line />
+        <CarousalSection iterable={newAlbums} sectionTitle="New Albums" key="__2__" />        
         <Line />
 
-        <div className={[styles['flex-container'], styles['align-center'], styles['container']].join(" ")}>
-          <p style={{fontWeight:'400', fontSize:'20px'}}>New Albums</p>
-          <Button 
-            customStyle={{border:'0', fontSize:'20px'}}
-            className={[btnStyles.btnColor]}
-            onClick={()=>setNewAlbumBtn((curr)=>{return 1-curr;})}
-          >{collapseBtnText[newAlbumBtn]}</Button>
-        </div>
-        <CarousalSection items={newAlbums} sectionId="__2__" btnState={collapseBtnText[newAlbumBtn]} />
-        
-        <Line />
-
+        <CarousalSection showBtn={false} iterable={filteredSongs}  sectionTitle="Songs" key="__3__">
+          <Tabs value={selectedGenre} onChange={handleChange} aria-label="basic tabs example">
+            {genres.map( genre => {
+              return (
+                <Tab key={genre.key} label={genre.label} sx={{color: 'var(--color-text)'}}/>
+              );
+            })}
+          </Tabs>
+        </CarousalSection>
       </section>
     </BrowserRouter>
   )
 }
 
+function a11yProps(index) {
+  return {
+    id: `genre-tab-${index}`,
+    'aria-controls': `genre-tabpanel-${index}`,
+  };
+}
+function CustomTab({key, iterable, children}) {
+
+}
 export default App
