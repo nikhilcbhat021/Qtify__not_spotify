@@ -4,6 +4,7 @@ function Button({
         customStyle = {backgroundColor: "black", color: "var(--color-primary)", pr:"16px", pl:"16px", pt:"10px", pb:"10px"},
         onClick=()=>{console.log("Button clicked")},
         className=[],
+        text,
         children
     }) {
 
@@ -12,7 +13,8 @@ function Button({
             style={customStyle}
             className={[...className, styles.btn].join(" ")}
             onClick={onClick}
-        >{children}</button>
+            onMouseEnter={()=>{console.log(`mouse hovered, text=${text} , children=${children}`);}}
+        >{text? text : children}</button>
     );
 }
 
