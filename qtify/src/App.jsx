@@ -7,21 +7,25 @@ import Hero from './components/Hero/Hero';
 import Button from './components/Button/Button'
 import Line from './components/Utils/Line'
 import CarousalSection from './components/Sections/CarousalSection'
+import FAQSection from './components/Sections/FAQSection'
+import MusicPlayer from './components/MusicPlayer/MusicPlayer'
 import axios from 'axios'
 
 
 // @mui
 import { Tab, Tabs } from '@mui/material'
+import { color } from '@mui/system'
 
 function App() {
 
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
   const [allSongs, setAllSongs] = useState([]);
+  const [faqs, setFaqs] = useState([]);
   const [filteredSongs, setFilteredSongs] = useState([]);
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState(0);
-
+  const [loading, setLoading] = useState(true);
   
   const collapseBtnText=["Show All", "Collapse"]
 
@@ -36,6 +40,12 @@ function App() {
         });
 
         const newalbumsresponse = await axios.get(`https://qtify-backend-labs.crio.do/albums/new`, {
+          headers:{
+            'Authorization': `Bearer ${token}`,
+          },
+        })
+
+        const faqsresponse = await axios.get(`https://qtify-backend-labs.crio.do/faq`, {
           headers:{
             'Authorization': `Bearer ${token}`,
           },
@@ -59,16 +69,19 @@ function App() {
         setTopAlbums(topalbumsresponse.data);
         setNewAlbums(newalbumsresponse.data);
         setAllSongs(allsongsresponse.data);
+        setFaqs(faqsresponse.data.data);
+        console.log(faqsresponse.data.data);
         setFilteredSongs(allsongsresponse.data);
         setGenres([{key:"all", label: "All"}, ...genresresponse.data.data]);
         
         console.log([{key:"all", label: "All"}, ...genresresponse.data.data]);
-
+        console.log("Inside big useEffect");
+        setLoading(false);
       } catch (error) {
         console.log(error.message);
       }
     }
-
+    setLoading(true);
     onLoadHandler();
   }, [])
 
@@ -98,10 +111,10 @@ function App() {
     <BrowserRouter>
       <Navbar searchData=""/>
       <Hero/>
-
       <section className={[styles['flex-container'], styles['gap-2'], styles['flex-column'], styles['container']].join(" ")}>
         <CarousalSection iterable={topAlbums} sectionTitle="Top Albums" key="__1__" />
         <Line />
+
         <CarousalSection iterable={newAlbums} sectionTitle="New Albums" key="__2__" />        
         <Line />
 
@@ -109,11 +122,16 @@ function App() {
           <Tabs value={selectedGenre} onChange={handleChange} aria-label="basic tabs example">
             {genres.map( genre => {
               return (
-                <Tab key={genre.key} label={genre.label} sx={{color: 'var(--color-text)'}}/>
+                <Tab key={genre.key} label={genre.label} sx={{color: 'var(--color-text)'}} />
               );
             })}
           </Tabs>
         </CarousalSection>
+        <Line />
+
+        <FAQSection faqs={faqs}/>
+
+        <MusicPlayer/>
       </section>
     </BrowserRouter>
   )

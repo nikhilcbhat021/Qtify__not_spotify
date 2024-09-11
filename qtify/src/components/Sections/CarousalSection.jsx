@@ -1,6 +1,6 @@
 import Card from "../Card/Card";
 import styles from './CarousalSection.module.css'
-import Carousal from './Carousal'
+import Carousal from '../Utils/Carousal'
 
 import Button from '../Button/Button'
 import btnStyles from '../Button/Button.module.css'
@@ -9,8 +9,9 @@ import Line from '../Utils/Line'
 import { SwiperSlide } from "swiper/react";
 import { useState } from "react";
 import { ChildCare } from "@mui/icons-material";
+import { memo } from "react";
 
-function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBtn=true}) {
+const CarousalSection = memo(function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBtn=true}) {
   const [btnState, setBtnState] = useState(0);
   const collapseBtnText=["Show All", "Collapse"]
   
@@ -21,6 +22,8 @@ function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBt
         </div>
       );
   });
+
+  const updateKey = (children && children[1]);
 
   const renderIterable = () => {
     if (iterable.length === 0) {
@@ -39,7 +42,7 @@ function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBt
 
     return (
       <section key={sectionId} className={styles['section-container']}>
-        <Carousal items={sectionInnerContent}></Carousal>
+        <Carousal items={sectionInnerContent}/>
       </section>
     );
   }
@@ -58,6 +61,6 @@ function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBt
 
     {renderIterable()}
   </>);
-}
+})
 
 export default CarousalSection;

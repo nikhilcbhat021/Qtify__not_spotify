@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+
 // Import Breakpoints from conf file.
 import Breakpoints from '../../../conf.json';
 
@@ -9,26 +10,28 @@ import Breakpoints from '../../../conf.json';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import styles from './CarousalSection.module.css'
+
+import styles from '../Sections/CarousalSection.module.css'
 import '../../index.css';
 
-// import required modules
 import { Navigation } from 'swiper/modules';
 
 export default function Carousal({children, items=[]}) {
 
+  console.log("Reconciling Carousal...");
   return (<>
     <Swiper
+      key={Math.random()}
       spaceBetween={40}
       slidesPerView={2}
       navigation={{
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       }}
-      // slideWidth
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
-
+      onSlideChange={(e) => {console.log('slide change') ; console.log(e);}}
+      onSwiper={(swiper) => {console.log(swiper);
+        swiper.slideTo(0);}}
+      onLoad={(swiper) => {console.log("onload"); return swiper.slideTo(0)}}
       breakpointsBase='container'
       breakpoints={Breakpoints.breakpoints}
       modules={[Navigation]}
