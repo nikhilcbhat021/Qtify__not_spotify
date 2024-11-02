@@ -1,0 +1,40 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+.selected {
+    color: burlywood;
+}
+
+.container {
+    padding: 1rem;
+    margin:0;
+}
+
+.gap-2 {
+    gap: 2rem;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-item {
+    flex: 0 0 auto;
+}
