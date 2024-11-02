@@ -7,21 +7,28 @@ import btnStyles from '../Button/Button.module.css'
 
 import Line from '../Utils/Line'
 import { SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import { useCallback, useState, useMemo } from "react";
 import { ChildCare } from "@mui/icons-material";
 import { memo } from "react";
 
-const CarousalSection = memo(function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBtn=true}) {
+const CarousalSection = memo(
+  function CarousalSection({children, iterable=[], sectionTitle, sectionId, showBtn=true, handleCardClick=undefined}) {
   const [btnState, setBtnState] = useState(0);
   const collapseBtnText=["Show All", "Collapse"]
   
-  const sectionInnerContent = iterable.map((item) => {
+  const sectionInnerContent = useMemo(() => {
+    console.log("inside usememo");
+    return iterable.map((item) => {
       return (
         <div key={item.id} className={styles['grid-item']}>
-          <Card details={item} /> 
+          <Card details={item} handleCardClick={handleCardClick}/> 
         </div>
       );
-  });
+    });
+  }, [iterable])
+  
+  if (!handleCardClick)
+    handleCardClick = useCallback(() => {})
 
   const updateKey = (children && children[1]);
 

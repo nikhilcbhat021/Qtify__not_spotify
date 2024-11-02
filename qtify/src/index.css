@@ -11,12 +11,18 @@
   --card-height: 170px;
   --card-full-height: 255px;
   --card-width: 159px;
+  /* diff=85 . Eventually, something like below. */
+  /* --card-height: 107px;
+  --card-full-height: 161px;
+  --card-width: 100px; */
 
   line-height: 1.5;
 
   background-color: var(--color-secondary);
+  color: var(--color-text);
   /* color: (white); */
   -webkit-font-smoothing: antialiased;
+
 }
 
 /*
@@ -94,7 +100,8 @@ p, h1, h2, h3, h4, h5, h6 {
   width: 32px;
   background-repeat: no-repeat;
   background-position: center;
-  color: transparent;
+  /* color: transparent; */
+  background-color: var(--color-text);
   border-radius: 50%;
   right: auto;
   left: 0;
@@ -108,7 +115,8 @@ p, h1, h2, h3, h4, h5, h6 {
   width: 32px;
   background-repeat: no-repeat;
   background-position: center;
-  color: transparent;
+  /* color: transparent; */
+  background-color: var(--color-text);
   border-radius: 50%;
   right: 0;
   left: auto;

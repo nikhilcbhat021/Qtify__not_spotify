@@ -18,43 +18,43 @@
         },
         "670": {
             "spaceBetween": 60,
-            "slidesPerView": 3
+            "slidesPerView": 4
         },
         "790": {
             "spaceBetween": 40,
-            "slidesPerView": 4
+            "slidesPerView": 5
         },
         "860": {
             "spaceBetween": 60,
-            "slidesPerView": 4
+            "slidesPerView": 5
         },
         "989": {
             "spaceBetween": 40,
-            "slidesPerView": 5
+            "slidesPerView": 6
         },
         "1064": {
             "spaceBetween": 50,
-            "slidesPerView": 5
+            "slidesPerView": 6
         },
         "1190": {
             "spaceBetween": 40,
-            "slidesPerView": 6
+            "slidesPerView": 7
         },
         "1240": {
             "spaceBetween": 50,
-            "slidesPerView": 6
+            "slidesPerView": 7
         },
         "1384": {
             "spaceBetween": 40,
-            "slidesPerView": 7
+            "slidesPerView": 8
         },
         "1500": {
             "spaceBetween": 50,
-            "slidesPerView": 7
+            "slidesPerView": 9
         },
         "1600": {
             "spaceBetween": 60,
-            "slidesPerView": 7
+            "slidesPerView": 9
         }
     }
 }

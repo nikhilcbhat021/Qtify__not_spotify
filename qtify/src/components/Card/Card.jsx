@@ -6,10 +6,10 @@ import { makeStyles } from '@mui/material'
 import styled from '@emotion/styled';
 import { color } from '@mui/system';
 
-function Card({details}) {
+function Card({details, handleCardClick=(arg)=>{console.log("default handleCardClick func");}}) {
     // console.log(details);
     return (<>
-        <div className={styles.cardParent}>
+        <div className={styles.cardParent} onClick={(e) => {handleCardClick(e.target)}}>
             <div className={[genStyles['flex-container'], genStyles['flex-column']].join(" ")} >
                 <img className={styles.cardImg} src={details.image} alt="Image not found"/>
                 <div className={styles.cardChipParent}>

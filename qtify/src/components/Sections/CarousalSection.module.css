@@ -16,6 +16,7 @@
 .section-container {
     background-color: var(--color-secondary);
     color: var(--color-text);
+    margin-bottom: 5px;
 }
 
 .flex-container {
