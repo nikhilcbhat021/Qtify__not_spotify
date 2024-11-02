@@ -18,13 +18,13 @@ const Listbox = styled("ul")(({ theme }) => ({
   height: "max-content",
   maxHeight: "500px",
   zIndex: 10,
-  overflowY: "scroll",
+  // overflowY: "scroll",
   left: 0,
   bottom: 0,
   right: 0,
   listStyle: "none",
   backgroundColor: "var(--color-secondary)",
-  overflow: "auto",
+  // overflow: "auto",
   "& li.Mui-focused": {
     backgroundColor: "#4a8df6",
     color: "white",
@@ -64,6 +64,7 @@ function Search({ searchData, placeholder }) {
       <form
         className={styles.wrapper}
         onSubmit={(e) => {
+          alert(value);
           onSubmit(e, value);
         }}
       >
