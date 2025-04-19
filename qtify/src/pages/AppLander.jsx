@@ -113,7 +113,7 @@ function AppLander() {
         console.log("all songs len=" + allSongs.length)
         setSelectedGenre(newValue);
         setFilteredSongs(postFiltering);
-    }, []);
+    }, [genres, allSongs]);
 
     const onAlbumClick = useCallback((cardDetails=undefined) => {
         console.log("In OnAlbumClick");
